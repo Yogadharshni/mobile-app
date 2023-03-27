@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Routes, Route, Link } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,12 +8,23 @@ function App() {
 
   return (
     <div className="App">
-<PhoneList/>
-    </div>
+
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/mobile" element={<PhoneList />} />
+    </Routes>
+  </div>
+  
   )
 }
 
-
+function Home(){
+  return(
+    <div>
+      <h1>Welcome to Mobile App 📱 </h1>
+    </div>
+  )
+}
 
 function PhoneList(){
   const [mobiledata,setMobile]=useState([])
