@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Home } from './Home';
 
 function App() {
 
@@ -11,18 +12,27 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/mobile" element={<PhoneList />} />
+      <Route path="/mobile" element={
+        <ProtectedRoute>
+      <PhoneList />
+      </ProtectedRoute>
+      } />
     </Routes>
   </div>
   
   )
 }
 
-function Home(){
-  return(
-    <div>
-      <h1>Welcome to Mobile App 📱 </h1>
-    </div>
+function ProtectedRoute({children}){
+  const token=localStorage.getItem('token');
+  return token? 
+    (<section>
+      <h1>This is a Protected Route </h1>
+      {children}
+    </section>
+  ):
+  (
+    <Navigate replace to='/'/>
   )
 }
 
