@@ -89,7 +89,7 @@ function Phone({mobile}){
     <div className="phone-container">
     
       <img className='phone-picture' src={mobile.img} alt={mobile.model}/ >
-      <h1 className='phone-name '>{mobile.model}</h1>
+      <h3 className='phone-name '>{mobile.model}</h3>
         <p className='phone-company'>{mobile.company}</p>
     </div>
   )
