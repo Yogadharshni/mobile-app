@@ -6,6 +6,7 @@ import './App.css'
 import { Home } from './Home';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
+import { API } from './global';
 
 
 function App() {
@@ -58,7 +59,7 @@ function PhoneList(){
   const [mobiledata,setMobile]=useState([])
 
 useEffect(()=>{
-  fetch('http://localhost:4000/mobile',{
+  fetch(`${API}/mobile`,{
     headers: { "x-auth-token" :localStorage.getItem("token") },
   })
   .then(res=>checkauth(res))

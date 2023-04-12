@@ -1,0 +1,1 @@
+export const API = 'https://all-db.onrender.com'
